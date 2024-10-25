@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asian World Clock By Sushil YT 1</title>
+    <link rel="stylesheet" href="clock_styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 0 0 5px #00ffcc;
+        }
+
+        #clocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .clock {
+            background: linear-gradient(135deg, #3c3c3c, #1a1a1a);
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            height: 100px; /* Set fixed height for small boxes */
+        }
+
+        .clock:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 255, 204, 0.8);
+        }
+
+        h2 {
+            margin: 5px 0;
+            font-size: 1.3em;
+            color: #00ffcc;
+        }
+
+        .time {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 5px 0;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Asian World Clock By Sushil YT 1</h1>
+        <div id="clocks">
+            <div class="clock" id="clock21"><h2>Kathmandu (NPT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock1"><h2>Tokyo (JST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock2"><h2>Beijing (CST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock3"><h2>New Delhi (IST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock4"><h2>Seoul (KST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock5"><h2>Bangkok (ICT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock6"><h2>Kuala Lumpur (MYT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock7"><h2>Hanoi (ICT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock8"><h2>Riyadh (AST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock9"><h2>Dubai (GST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock10"><h2>Manila (PHT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock11"><h2>Jerusalem (IST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock12"><h2>Islamabad (PKT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock13"><h2>Colombo (SLST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock14"><h2>Astana (ALMT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock15"><h2>Dhaka (BST)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock16"><h2>Tashkent (UZT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock17"><h2>Yerevan (AMT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock18"><h2>Baku (AZT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock19"><h2>Phnom Penh (ICT)</h2><p class="time">Loading...</p></div>
+            <div class="clock" id="clock20"><h2>Ulaanbaatar (ULAT)</h2><p class="time">Loading...</p></div>
+        </div>
+    </div>
+
+    <script>
+        const clocks = [
+            { id: 'clock21', offset: 5.75 }, // Kathmandu
+            { id: 'clock1', offset: 9 },     // Tokyo
+            { id: 'clock2', offset: 8 },     // Beijing
+            { id: 'clock3', offset: 5.5 },   // New Delhi
+            { id: 'clock4', offset: 9 },     // Seoul
+            { id: 'clock5', offset: 7 },     // Bangkok
+            { id: 'clock6', offset: 8 },     // Kuala Lumpur
+            { id: 'clock7', offset: 7 },     // Hanoi
+            { id: 'clock8', offset: 3 },     // Riyadh
+            { id: 'clock9', offset: 4 },     // Dubai
+            { id: 'clock10', offset: 8 },    // Manila
+            { id: 'clock11', offset: 2 },    // Jerusalem
+            { id: 'clock12', offset: 5 },    // Islamabad
+            { id: 'clock13', offset: 5.5 },  // Colombo
+            { id: 'clock14', offset: 6 },    // Astana
+            { id: 'clock15', offset: 6 },    // Dhaka
+            { id: 'clock16', offset: 5 },    // Tashkent
+            { id: 'clock17', offset: 4 },    // Yerevan
+            { id: 'clock18', offset: 4 },    // Baku
+            { id: 'clock19', offset: 7 },    // Phnom Penh
+            { id: 'clock20', offset: 8 }     // Ulaanbaatar
+        ];
+
+        function updateClocks() {
+            const now = new Date();
+            clocks.forEach(clock => {
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const localTime = new Date(utc + (3600000 * clock.offset));
+                const hours = String(localTime.getHours()).padStart(2, '0');
+                const minutes = String(localTime.getMinutes()).padStart(2, '0');
+                const seconds = String(localTime.getSeconds()).padStart(2, '0');
+                
+                const timeString = `${hours}:${minutes}:${seconds}`;
+                
+                document.querySelector(`#${clock.id} .time`).textContent = timeString;
+            });
+        }
+
+        setInterval(updateClocks, 1000);
+        updateClocks(); // Initial call to display the time immediately
+    </script>
+</body>
+</html>
